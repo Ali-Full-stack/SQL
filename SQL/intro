@@ -1,0 +1,93 @@
+-- Create database called persons
+create database persons ;
+
+-- Create table called employee with related columns
+create table employees(
+	id 		int,
+	name	varchar(255),
+	age		int,
+	department	varchar(255)
+) ;
+
+
+-- insert information into table
+insert into employees(id,name,age,department)
+values
+	(134,  'Iskandar',    19,   'Human Resource'),
+	(201,  'Suhrob',      28, 	'IT department'),
+	(92,   'Jamoldin',    41,   'Finance'),
+	(7,    'Muhammadali', 26,   'Operation'),
+	(134,  'Izzatillo',   21,   'Marketing'),
+	(77,   'Qobil',		  32,   'Sales')
+;
+
+-- display all columns with information from table
+select * from employees ;
+
+-- get name and department columns from table
+select
+	name,
+	department
+from employees ;
+
+--display employees whose age is older than or equal to 30
+select * from employees
+where age >= 30 ;
+
+--to get info of employees who work in It department
+select * from employees
+where department ='IT department' ;
+
+--update a age of employees 
+update employees
+set age = 35 
+where id = 92 ;
+
+-- check the updates
+select * from employees 
+where id = 92 ;
+
+--update employees deparment
+update employees 
+set department = 'Production'
+where name = 'Iskandar' ;
+
+-- check the updates
+select * from employees 
+where name = 'Iskandar' ;
+
+-- remove employees from table
+delete from employees
+where name = 'Qobil' ;
+
+-- check the updates
+select * from employees ;
+
+-- order employees  by age 
+select * from employees 
+order by age asc ;
+
+-- display employees whose name starts with letter 'I'
+select * from employees 
+where name like 'I%' ;
+
+
+--display employees whose age is between 25 and 35
+select * from employees
+where age between 25 and 35 
+order by age desc ;
+
+
+-- display the average age of employees
+select 
+	round(avg(age)) as average_age
+from employees ;
+
+--get total number of employees from each department
+
+select 
+	department,
+	count(*) as total_number
+from employees
+group by department ;
+
